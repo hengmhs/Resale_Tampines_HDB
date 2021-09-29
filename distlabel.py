@@ -11,8 +11,10 @@ geolocator = GoogleV3(API_KEY)
 # Tampines MRT lat: 1.3533834 long: 103.9451538
 tampines_mrt = (1.3533834, 103.9451538)
 
+wb_name = 'resale2013_2018.xlsx'
+
 # Load the Workbook
-wb = load_workbook('resale_sample.xlsx')
+wb = load_workbook(wb_name)
 # Load the Worksheet
 sheet = wb['Sheet1']
 
@@ -41,4 +43,4 @@ for row in range(1,dist_list_len):
     cell = sheet.cell(column=11, row=row)
     cell.value = dist_list[row]
 
-wb.save('resale_sample.xlsx')
+wb.save(wb_name)
