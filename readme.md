@@ -8,7 +8,6 @@ Geopy.distance was used to determine the distance between the HDB flats and Tamp
 
 ## Legend
 In resale2013_2018.xlsx, 
-    
     1. **distance** - the distance of the HDB flat from Tampines MRT
     2. **mrt** - 1 denotes less than 400m from Tampines MRT and 0 denotes more than 400m from Tampines MRT
 
