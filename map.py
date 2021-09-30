@@ -59,7 +59,12 @@ for coord in coord_list:
     coord_list_long.append(coord[1])
 
 # scatter takes a list of lats and longs
-gmap.scatter(tamp_list_lat,tamp_list_long,size=10,color='red',marker=False,alpha=1)
-gmap.scatter(coord_list_lat, coord_list_long,size=10,color='blue',marker=False)
+gmap.scatter(tamp_list_lat,tamp_list_long,size=8,color='red',marker=False,alpha=1)
+gmap.scatter(coord_list_lat, coord_list_long,size=8,color='blue',marker=False)
 
+gmap.circle(1.3533834, 103.9451538,400,face_alpha=0,edge_color='red')
+gmap.circle(1.3558290924997582, 103.95520090009265,400,face_alpha=0,edge_color='blue')
+gmap.circle(1.345808393511592, 103.9382382867281,400,face_alpha=0,edge_color='blue')
+gmap.circle(1.3433117614470864, 103.95364307656335,400,face_alpha=0,edge_color='blue')
+gmap.circle(1.3418146392239008, 103.96183240725058,400,face_alpha=0,edge_color='blue')
 gmap.draw('visualisation.html')
