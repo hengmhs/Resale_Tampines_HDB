@@ -19,8 +19,7 @@ wb = load_workbook(wb_name)
 sheet = wb['Sheet1']
 
 addr_list = []
-# ' ' is padding for index purposes
-dist_list = [' ','distance']
+dist_list = []
 
 # start from 2 to avoid the column headers, range() is one less step than max
 for i in range(2, sheet.max_row + 1):
@@ -30,17 +29,55 @@ for i in range(2, sheet.max_row + 1):
 
 addr_list_len = len(addr_list)
 
+# list of coordinates
+coord_list = []
+
+# save repeat addresses to save API calls
+coord_obj = {}
+
+# saves repeat addresses to save API calls
+dist_obj = {}
+
 for index, address in enumerate(addr_list):
     print(str(index+1)+'/'+str(addr_list_len))
-    location = geolocator.geocode(address)
-    place = (location.latitude, location.longitude)
-    dist =geopy.distance.geodesic(place, tampines_mrt).km
-    dist_list.append(dist)
+    if address in dist_obj:
+        # get distance
+        dist_list.append(dist_obj[address])
+        # get coordinates
+        coord_list.append(coord_obj[address])
+        print('duplicate')
+    else:
+        location = geolocator.geocode(address)
+        place = (location.latitude, location.longitude)
+        coord_obj[address] = place
+        # get distance
+        dist = geopy.distance.geodesic(place, tampines_mrt).km
+        # save distance to dist_obj
+        dist_obj[address] = dist
+        dist_list.append(dist)
+        # add coordinates to list 
+        coord_list.append(place)
+
 
 dist_list_len = len(dist_list)
+coord_list_len = len(coord_list)
 
-for row in range(1,dist_list_len):
-    cell = sheet.cell(column=11, row=row)
-    cell.value = dist_list[row]
+# write distances to excel
+# Excel row starts at 2 but index of dist_list must start at 0
+# therefore add 2 to row value
+for i in range(0,dist_list_len):
+    cell = sheet.cell(column=13, row=i+2)
+    cell.value = dist_list[i]
+
+# write latitude coordinates to excel
+for i in range(0,coord_list_len):
+    cell = sheet.cell(column=11, row=i+2)
+    cell.value = coord_list[i][0]
+
+# write longitude coordinates to excel
+for i in range(0,coord_list_len):
+    cell = sheet.cell(column=12, row=i+2)
+    cell.value = coord_list[i][1]
+
 
 wb.save(wb_name)
