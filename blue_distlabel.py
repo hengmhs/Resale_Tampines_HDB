@@ -13,6 +13,7 @@ sheet = wb['Sheet1']
 
 coord_list = []
 east_dist_list = []
+west_dist_list = []
 
 # start from 2 to avoid the column headers, range() is one less step than max
 # get coordinates of each place
@@ -22,8 +23,10 @@ for i in range(2, sheet.max_row + 1):
     coord = (lat, longitude)
     coord_list.append(coord)
 
+'''
 # get distances between coord and tampines east mrt
-for coord in coord_list:
+for index, coord in enumerate(coord_list):
+    print(str(index+1)+'/'+str(len(coord_list)))
     dist = geopy.distance.geodesic(coord, tampines_east_mrt).km
     east_dist_list.append(dist)
 
@@ -31,5 +34,17 @@ for coord in coord_list:
 for i in range(0, len(east_dist_list)):
     cell = sheet.cell(column=14, row=i+2)
     cell.value = east_dist_list[i]
+'''
+
+# get distances between coord and tampines west mrt
+for index, coord in enumerate(coord_list):
+    print(str(index+1)+'/'+str(len(coord_list)),end='\r')
+    dist = geopy.distance.geodesic(coord, tampines_west_mrt).km
+    west_dist_list.append(dist)
+
+# write tampines west mrt to excel
+for i in range(0, len(west_dist_list)):
+    cell = sheet.cell(column=15, row=i+2)
+    cell.value = west_dist_list[i]
 
 wb.save(wb_name)
