@@ -19,6 +19,9 @@ In resale2013_2018.xlsx,
 6. **tampines_mrt** - 1 denotes less than 400m from Tampines MRT and 0 denotes more than 400m from Tampines MRT
 7. **east_mrt** - 1 denotes less than 400m from Tampines East MRT and 0 denotes more than 400m from Tampines East MRT
 8. **west_mrt** - 1 denotes less than 400m from Tampines West MRT and 0 denotes more than 400m from Tampines West MRT
+9. **simei_mrt** - 1 denotes less than 400m from Simei MRT and 0 denotes more than 400m from Simei MRT
+10. **upper_changi_mrt** - 1 denotes less than 400m from Upper Changi MRT and 0 denotes more than 400m from Upper Changi MRT
+
 
 # HDB Location Visualisation
 
@@ -30,7 +33,8 @@ Uses gmplot to plot the location of HDBs in Tampines
 
 ## Legend
 1. Red - Within 400m of Tampines MRT
-2. Blue - Further than 400m of Tampines MRT and within 400m of Tampines East MRT or Tampines West MRT
+2. Green - Within 400m of a MRT station that is not Tampines
+3. Blue - Not within 400m of any MRT station
 
 To use,
 1. Create virtualenv 
@@ -38,6 +42,6 @@ To use,
 3. Obtain Google Maps API Key and save it as API_KEY.txt
 4. Enable Google Geolocation API and Maps Javascript API
 
-**Note**: Do not upload the created visualisation.html file publicly as it contains the API Key information   
+⚠️ **Note**: Do not upload the created visualisation.html file publicly as it contains the API Key information   
 
 For the EC4352 Singapore Economy: Practice and Policy module
