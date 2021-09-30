@@ -29,7 +29,13 @@ Uses gmplot to plot the location of HDBs in Tampines
 ![visualisation](/visualisation.jpg)
 
 ## Legend
-Red - Within 400m of Tampines MRT
-Blue - Further than 400m of Tampines MRT and within 400m of Tampines East MRT or Tampines West MRT
+1. Red - Within 400m of Tampines MRT
+2. Blue - Further than 400m of Tampines MRT and within 400m of Tampines East MRT or Tampines West MRT
+
+To use,
+1. Create virtualenv 
+2. pip install -r requirements.txt
+3. Obtain Google Maps API Key and save it as API_KEY.txt
+4. Enable Google Geolocation API and Maps Javascript API
 
 For the EC4352 Singapore Economy: Practice and Policy module
