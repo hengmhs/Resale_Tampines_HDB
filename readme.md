@@ -1,5 +1,7 @@
 # Tampines HDB 2013 - 2018 Resale Data Tagging
 
+_distlabel.py_
+
 Data obtained from https://data.gov.sg/dataset/resale-flat-prices
 
 Google Geocoding API was used to find the latitude and longitude of HDB flats
@@ -18,5 +20,16 @@ In resale2013_2018.xlsx,
 7. east_mrt - 1 denotes less than 400m from Tampines East MRT and 0 denotes more than 400m from Tampines East MRT
 8. west_mrt - 1 denotes less than 400m from Tampines West MRT and 0 denotes more than 400m from Tampines West MRT
 
+# HDB Location Visualisation
+
+_map.py_
+
+Uses gmplot to plot the location of HDBs in Tampines
+
+![visualisation](/visualisation.jpg)
+
+## Legend
+Red - Within 400m of Tampines MRT
+Blue - Further than 400m of Tampines MRT and within 400m of Tampines East MRT or Tampines West MRT
 
 For the EC4352 Singapore Economy: Practice and Policy module
